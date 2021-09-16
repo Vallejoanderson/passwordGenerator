@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+	<title>Document</title>
+</head>
+<body class="bg-gray-800">
+	<div id="app" class="my-12 mx-auto text-white w-1/3">
+		<h1 class="text-center font-bold text-2xl">Comprueba la seguridad de tu contraseña</h1>
+		<h1 class="text-left font-bold text-sm mt-5">Nueva contraseña</h1>
+		<form action="">
+			<input class="px-5 bg-gray-800 mx-auto w-full h-14 rounded-md mt-1 border-gray-200 border-2 border-opacity-50 cursor-not-allowed" type="text" placeholder="Ingresa tu contraseña" disabled>
+			<input class="cursor-pointer w-full h-12 mt-4 font-bold text-gray-800 rounded-md bg-purple-200 hover:bg-purple-300" type="submit" value="Comprobar" disabled></input>
+		</form>
+		<p class="mt-12 mb-4 font-bold text-2xl text-center border-t-2 border-gray-500">Genera una contraseña aleatoria segura</p>
+		<button v-on:click="newPassword" class="cursor-pointer w-full h-12 mt-4 font-bold text-gray-800 rounded-md bg-purple-200 hover:bg-purple-300">Generar</button>
+		<p v-if="isVisible" class="text-center mt-16 text-gray-500">No hay contraseñas</p>
+		<div v-for="(password, key) in passwords" class="flex justify-between list-none w-full h-12 mt-4 rounded-md bg-gray-800 border-gray-200 border-2 border-opacity-50 py-2 px-6">
+				<p>{{ password }}</p>
+				<button v-on:click="deletePassword(key)" class="bg-purple-200 text-gray-800 font-bold text-sm px-2 rounded hover:bg-purple-300">Eliminar</button>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="scripts/app.js"></script>
+</body>
+</html>
