@@ -11,9 +11,10 @@
 	<div id="app" class="my-12 mx-auto text-white w-1/3">
 		<h1 class="text-center font-bold text-2xl">Comprueba la seguridad de tu contraseña</h1>
 		<h1 class="text-left font-bold text-sm mt-5">Nueva contraseña</h1>
-		<form action="">
-			<input class="px-5 bg-gray-800 mx-auto w-full h-14 rounded-md mt-1 border-gray-200 border-2 border-opacity-50 cursor-not-allowed" type="text" placeholder="Ingresa tu contraseña" disabled>
-			<input class="cursor-pointer w-full h-12 mt-4 font-bold text-gray-800 rounded-md bg-purple-200 hover:bg-purple-300" type="submit" value="Comprobar" disabled></input>
+		<form action="" v-on:submit.prevent="warning = !testPassword(myPassword)">
+			<input v-model="myPassword" class="px-5 bg-gray-800 mx-auto w-full h-14 rounded-md mt-1 border-gray-200 border-2 border-opacity-50" type="text" placeholder="Ingresa tu contraseña">
+			<input class="cursor-pointer w-full h-12 mt-4 font-bold text-gray-800 rounded-md bg-purple-200 hover:bg-purple-300" type="submit" value="Comprobar"></input>
+			<p v-if="warning" class="italic text-xs mt-1 text-red-500">La clave no es segura.</p>
 		</form>
 		<p class="mt-12 mb-4 font-bold text-2xl text-center border-t-2 border-gray-500">Genera una contraseña aleatoria segura</p>
 		<button v-on:click="newPassword" class="cursor-pointer w-full h-12 mt-4 font-bold text-gray-800 rounded-md bg-purple-200 hover:bg-purple-300">Generar</button>
